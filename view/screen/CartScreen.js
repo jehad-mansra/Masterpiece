@@ -16,15 +16,19 @@ import {
   decrementQuantity,
   incrementQuantity,
   removeFromCart,
+  updateTotal,
 } from "../redux/CartRedux";
 import { useNavigation } from "@react-navigation/native";
 
 const CartScreen = () => {
   const cart = useSelector((state) => state.cart.cart);
+
   const total = cart
     ?.map((item) => item.price * item.quantity)
     .reduce((curr, prev) => curr + prev, 0);
+
   const dispatch = useDispatch();
+  console.log(total);
 
   const increaseQuantity = (item) => {
     dispatch(incrementQuantity(item));
@@ -50,7 +54,11 @@ const CartScreen = () => {
       <Text style={{ marginHorizontal: 10 }}>EMI details Available</Text>
 
       <Pressable
-        onPress={() => navigation.navigate("Confirm")}
+        onPress={() => {
+          // Dispatch the action to update total in global state
+          dispatch(updateTotal(total));
+          navigation.navigate("Confirm");
+        }}
         style={{
           backgroundColor: "#FFC72C",
           padding: 10,
