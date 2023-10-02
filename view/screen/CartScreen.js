@@ -6,6 +6,7 @@ import {
   Pressable,
   TextInput,
   Image,
+  Alert,
 } from "react-native";
 import React from "react";
 import { Feather } from "@expo/vector-icons";
@@ -45,7 +46,7 @@ const CartScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <ScrollView style={{ marginTop: 55, flex: 1, backgroundColor: "white" }}>
+    <ScrollView style={{ marginTop: 33, flex: 1, backgroundColor: "white" }}>
       <Header />
       <View style={{ padding: 10, flexDirection: "row", alignItems: "center" }}>
         <Text style={{ fontSize: 18, fontWeight: "400" }}>Subtotal : </Text>
@@ -55,9 +56,18 @@ const CartScreen = () => {
 
       <Pressable
         onPress={() => {
-          // Dispatch the action to update total in global state
-          dispatch(updateTotal(total));
-          navigation.navigate("Confirm");
+          if (cart.length > 0) {
+            // Dispatch the action to update total in global state
+            dispatch(updateTotal(total));
+            navigation.navigate("Confirm");
+          } else {
+            // Display an alert if cart is empty
+            Alert.alert(
+              "Cart Empty",
+              "Please add items to your cart before proceeding.",
+              [{ text: "OK" }]
+            );
+          }
         }}
         style={{
           backgroundColor: "#FFC72C",

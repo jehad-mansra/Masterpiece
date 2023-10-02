@@ -20,22 +20,21 @@ const RegisterScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-
+  const navigation = useNavigation();
   const handleRegister = () => {
     const user = {
       name: name,
       email: email,
       password: password,
     };
-
+    console.log("hellllo");
     // send a POST  request to the backend API to register the user
     Api.post("/register", user)
       .then((response) => {
-        console.log(response);
         Alert.alert(
-          "Registration successful",
-          "You have been registered Successfully"
+          "Registration successful. Please check your email for verification."
         );
+        navigation.replace("login");
         setName("");
         setEmail("");
         setPassword("");
@@ -49,22 +48,19 @@ const RegisterScreen = () => {
       });
   };
 
-  const navigation = useNavigation();
   return (
     <SafeAreaView
       style={{
         flex: 1,
         backgroundColor: "white",
         alignItems: "center",
-        marginTop: 50,
+        marginTop: 40,
       }}
     >
       <View>
         <Image
-          style={{ width: 150, height: 100 }}
-          source={{
-            uri: "https://assets.stickpng.com/thumbs/6160562276000b00045a7d97.png",
-          }}
+          style={{ width: 180, height: 170 }}
+          source={require("../assets/logobg-removebg-preview.png")}
         />
       </View>
       <KeyboardAvoidingView>
@@ -102,7 +98,7 @@ const RegisterScreen = () => {
               value={name}
               onChangeText={(text) => setName(text)}
               style={{
-                color: "gray",
+                color: "black",
                 marginVertical: 10,
                 width: 300,
                 fontSize: name ? 19 : 16,
@@ -132,7 +128,7 @@ const RegisterScreen = () => {
               onChangeText={(text) => setEmail(text)}
               style={{
                 marginVertical: 10,
-                color: "gray",
+                color: "black",
                 width: 300,
                 fontSize: email ? 19 : 16,
               }}
@@ -162,7 +158,7 @@ const RegisterScreen = () => {
                 onChangeText={(text) => setPassword(text)}
                 secureTextEntry
                 style={{
-                  color: "gray",
+                  color: "black",
                   marginVertical: 10,
                   width: 300,
                   fontSize: email ? 19 : 16,

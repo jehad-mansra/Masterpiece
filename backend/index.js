@@ -70,7 +70,6 @@ const sendVerificationEmail = async (email, verificationToken) => {
 
 app.post("/register", async (req, res) => {
   try {
-    console.log("first");
     const { name, email, password } = req.body;
 
     // Check if the email is already registered
@@ -93,6 +92,10 @@ app.post("/register", async (req, res) => {
 
     // Send verification email to the user
     sendVerificationEmail(newUser.email, newUser.verificationToken);
+    res.status(201).json({
+      message:
+        "Registration successful. Please check your email for verification.",
+    });
   } catch (err) {
     console.log("Error during registration:", err.message); // Debugging statement
     res.status(500).json({ message: "Registration failed" });
@@ -118,7 +121,7 @@ app.get("/verify/:token", async (req, res) => {
 
     res.status(200).json({ message: "Email verified successfully" });
   } catch (error) {
-    res.status(500).json({ message: "Email Verificatioion Failed" });
+    res.status(500).json({ message: "Email Verification Failed" });
   }
 });
 
@@ -147,7 +150,7 @@ app.post("/login", async (req, res) => {
     //generate a token
     const token = jwt.sign({ userId: user._id }, secretKey);
 
-    res.status(200).json({ token });
+    res.status(200).json({ token, user });
   } catch (error) {
     res.status(500).json({ message: "Login Failed" });
   }
@@ -233,7 +236,8 @@ app.post("/orders", async (req, res) => {
 //get the user profile
 app.get("/profile/:userId", async (req, res) => {
   try {
-    const userId = req.body.userId;
+    const userId = req.params.userId;
+    console.log(req.body);
 
     const user = await User.findById(userId);
 
@@ -259,6 +263,6 @@ app.get("/orders/:userId", async (req, res) => {
 
     res.status(200).json({ orders });
   } catch (error) {
-    res.status(500).json({ message: "Error" });
+    res.status(500).json({ message: "**Error**" });
   }
 });

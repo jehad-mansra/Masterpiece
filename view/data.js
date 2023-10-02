@@ -36,9 +36,10 @@ const list = [
 ];
 
 const images = [
-  "https://img.etimg.com/thumb/msid-93051525,width-1070,height-580,imgsize-2243475,overlay-economictimes/photo.jpg",
-  "https://images-eu.ssl-images-amazon.com/images/G/31/img22/Wireless/devjyoti/PD23/Launches/Updated_ingress1242x550_3.gif",
-  "https://images-eu.ssl-images-amazon.com/images/G/31/img23/Books/BB/JULY/1242x550_Header-BB-Jul23.jpg",
+  "https://www.apple.com/mideast/iphone/home/bo/images/meta/iphone__btp62hy2cbea_og.jpg",
+  "https://m.economictimes.com/thumb/msid-99669954,width-7046,height-3963,resizemode-4,imgsize-1040534/best-gaming-headphones-in-india-under-rs-2500-for-crystal-clear-sound.jpg",
+  "https://assets2.razerzone.com/images/pnx.assets/7fb8deac5d3c73e360bc687ed62be6cf/gaming-laptops-og-image.png",
+  "https://media.discordapp.net/attachments/1125737184180326440/1134790077185278063/tcl-6-series-tv-r6-2022-6396.png?width=1177&height=662",
 ];
 
 const deals = [

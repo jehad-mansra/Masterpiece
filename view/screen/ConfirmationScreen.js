@@ -389,7 +389,17 @@ const ConfirmationScreen = () => {
             <Text> Credit or debit card</Text>
           </View>
           <Pressable
-            onPress={() => setCurrentStep(3)}
+            onPress={() => {
+              if (selectedOption === "cash" || selectedOption === "card") {
+                setCurrentStep(3);
+              } else {
+                Alert.alert(
+                  "Payment Method Required",
+                  "Please select a payment method (Cash or Card) before proceeding.",
+                  [{ text: "OK" }]
+                );
+              }
+            }}
             style={{
               backgroundColor: "#008397",
               padding: 10,

@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   TextInput,
   Pressable,
+  Alert,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -41,7 +42,7 @@ const LoginScreen = () => {
       password: password,
     };
 
-    Api.post("./login", user)
+    Api.post("/login", user)
       .then((response) => {
         console.log(response);
         const token = response.data.token;
@@ -64,10 +65,8 @@ const LoginScreen = () => {
     >
       <View>
         <Image
-          style={{ width: 150, height: 100 }}
-          source={{
-            uri: "https://assets.stickpng.com/thumbs/6160562276000b00045a7d97.png",
-          }}
+          style={{ width: 180, height: 170 }}
+          source={require("../assets/logobg-removebg-preview.png")}
         />
       </View>
       <KeyboardAvoidingView>
@@ -106,7 +105,7 @@ const LoginScreen = () => {
               onChangeText={(text) => setEmail(text)}
               style={{
                 marginVertical: 10,
-                color: "gray",
+                color: "black",
                 width: 300,
                 fontSize: email ? 16 : 16,
               }}
@@ -136,7 +135,7 @@ const LoginScreen = () => {
                 onChangeText={(text) => setPassword(text)}
                 secureTextEntry
                 style={{
-                  color: "gray",
+                  color: "black",
                   marginVertical: 10,
                   width: 300,
                   fontSize: email ? 16 : 16,
