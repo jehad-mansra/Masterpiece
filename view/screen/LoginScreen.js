@@ -42,7 +42,7 @@ const LoginScreen = () => {
       password: password,
     };
 
-    Api.post("/login", user)
+    Api.post("/api/v1/user/login", user)
       .then((response) => {
         console.log(response);
         const token = response.data.token;

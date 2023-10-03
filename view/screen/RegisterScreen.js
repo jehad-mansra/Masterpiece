@@ -9,7 +9,7 @@ import {
   Pressable,
   Alert,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
@@ -27,9 +27,9 @@ const RegisterScreen = () => {
       email: email,
       password: password,
     };
-    console.log("hellllo");
+
     // send a POST  request to the backend API to register the user
-    Api.post("/register", user)
+    Api.post("/api/v1/user/register", user)
       .then((response) => {
         Alert.alert(
           "Registration successful. Please check your email for verification."
@@ -44,7 +44,7 @@ const RegisterScreen = () => {
           "Registration Error",
           "An error occurred while registering"
         );
-        console.log("registration failed", error);
+        console.log("registration failed", error.message);
       });
   };
 
@@ -76,7 +76,7 @@ const RegisterScreen = () => {
             Register to your Account
           </Text>
         </View>
-        <View style={{ marginTop: 70 }}>
+        <View style={{ marginTop: 25 }}>
           <View
             style={{
               flexDirection: "row",

@@ -18,7 +18,7 @@ const UserContext = ({ children }) => {
 
   const fetchAddresses = async () => {
     try {
-      const response = await Api.get(`/addresses/${userId}`);
+      const response = await Api.get(`/api/v1/addresses/${userId}`);
       const { addresses } = response.data;
       setAddresses(addresses);
     } catch (error) {

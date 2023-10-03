@@ -65,6 +65,14 @@ const HomeScreen = () => {
   }, []);
   const cart = useSelector((state) => state.cart.cart);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigation.navigate("Main");
+    }, 2000); // Adjust the delay as needed (in milliseconds)
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <SafeAreaView

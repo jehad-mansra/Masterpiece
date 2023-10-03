@@ -16,6 +16,7 @@ import CartScreen from "../screen/CartScreen";
 import ProfileScreen from "../screen/ProfileScreen";
 import ConfirmationScreen from "../screen/ConfirmationScreen";
 import OrderScreen from "../screen/OrderScreen";
+import SplashScreen from "../screen/SplashScreen ";
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -112,6 +113,11 @@ const StackNavigator = () => {
         <Stack.Screen
           name="order"
           component={OrderScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Splash"
+          component={SplashScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

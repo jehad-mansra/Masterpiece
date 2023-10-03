@@ -30,7 +30,7 @@ const AddAddressScreen = () => {
   const handleAddAddress = async () => {
     const address = { name, mobileNo, houseNo, street };
 
-    await Api.post("/addresses", { address, userId })
+    await Api.post("/api/v1/addresses", { address, userId })
       .then((response) => {
         Alert.alert("Success", "Addresses added successfully");
         setName("");

@@ -59,7 +59,7 @@ const ProfileScreen = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await Api.get(`/profile/${userId}`);
+        const response = await Api.get(`/api/v1/user/profile/${userId}`);
         console.log(response.data);
         const { user } = response.data;
         setUser(user);
@@ -84,7 +84,7 @@ const ProfileScreen = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await Api.get(`/orders/${userId}`);
+        const response = await Api.get(`/api/v1/orders/${userId}`);
         const orders = response.data.orders;
         setOrders(orders);
 

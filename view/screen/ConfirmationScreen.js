@@ -46,7 +46,7 @@ const ConfirmationScreen = () => {
         paymentMethod: selectedOption,
       };
 
-      const response = await Api.post("/orders", orderData);
+      const response = await Api.post("/api/v1/orders", orderData);
 
       if (response.status === 200) {
         navigation.navigate("order");
@@ -70,7 +70,7 @@ const ConfirmationScreen = () => {
         paymentMethod: "card",
       };
 
-      const response = await Api.post("/orders", orderData);
+      const response = await Api.post("/api/v1/orders", orderData);
 
       if (response.status === 200) {
         navigation.navigate("order");
